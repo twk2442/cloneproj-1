@@ -27,7 +27,7 @@ function Func(props) {
   var [_date, setDate] = useState(new Date().toString()); // useState(초기값); 괄호안에
   // 내용은 _data초기값 설정
 
-  console.log("%cfunc => render" + ++funcId, funcStyle); // ++ 은 실행될때마다 1씩증가
+  console.log("%cfunc => render" + ++funcId, funcStyle); // ++ 은 실행될때마다 1씩증가 d
   return (
     <div className="container">
       <h2>function style component</h2>
