@@ -1,0 +1,5 @@
+과저 function형은 state와 라이프사이클 api사용이 불가하였기때문에 
+class형보단 간단했지만 크게 사용 받을 수 없었다 
+but 지금은 hook이라는 기능을 사용할 수 있게되어 hook을 통해 state와 
+라이프사이클을 이용할 수 있게되어 
+functuin형이 각광받기 시작 
