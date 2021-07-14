@@ -1,12 +1,22 @@
 import "./App.css";
 import { Component } from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
+  var [funcShow, setFuncShow] = useState(true);
+
   return (
     <div className="container">
       <h1>hello world</h1>
-      <Func initNumber={2}></Func>
+      <input
+        type="button"
+        value="removefunc"
+        onClick={function () {
+          if (funcShow === true) setFuncShow(false);
+          else setFuncShow(true);
+        }}
+      ></input>
+      {funcShow ? <Func initNumber={2}></Func> : null}
       <ClassCom initNumber={2}></ClassCom>
     </div>
   );
@@ -27,7 +37,43 @@ function Func(props) {
   var [_date, setDate] = useState(new Date().toString()); // useState(초기값); 괄호안에
   // 내용은 _data초기값 설정
 
-  console.log("%cfunc => render" + ++funcId, funcStyle); // ++ 은 실행될때마다 1씩증가 d
+  useEffect(
+    function () {
+      console.log(
+        "%cfunc => useEffect number (componentDidMount & componentDidUpdate" +
+          ++funcId,
+        funcStyle
+      ); // ++ 은 실행될때마다 1씩증가 d
+      document.title = number;
+      return function () {
+        console.log(
+          "%cfunc => useEffect number return (componentDidMount & componentDidUpdate" +
+            ++funcId,
+          funcStyle
+        );
+      };
+    },
+    [number]
+  );
+  useEffect(
+    function () {
+      console.log(
+        "%cfunc => useEffect number (componentDidMount & componentDidUpdate" +
+          ++funcId,
+        funcStyle
+      ); // ++ 은 실행될때마다 1씩증가 d
+      document.title = _date;
+      return function () {
+        // return 함수는 cleanup 기능으로  라이프사이클중  update기능  전에 있었던 함수 삭제기능을 담당
+        console.log(
+          "%cfunc => useEffect date return (componentDidMount & componentDidUpdate" +
+            ++funcId,
+          funcStyle
+        );
+      };
+    },
+    [_date]
+  );
   return (
     <div className="container">
       <h2>function style component</h2>
