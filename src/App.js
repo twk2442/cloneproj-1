@@ -13,7 +13,8 @@ function App() {
         value="removefunc"
         onClick={function () {
           if (funcShow === true) setFuncShow(false);
-          else setFuncShow(true);
+          // 응용 더블클릭시 다시나타나고 사라지는
+          else setFuncShow(true); // 기능 만듬
         }}
       ></input>
       {funcShow ? <Func initNumber={2}></Func> : null}
